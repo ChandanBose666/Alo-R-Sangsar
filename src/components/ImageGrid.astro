@@ -1,0 +1,29 @@
+---
+const images = [
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.00.jpeg',
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.01.jpeg',
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.02 (1).jpeg',
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.02 (2).jpeg',
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.02.jpeg',
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.03 (1).jpeg',
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.03 (2).jpeg',
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.03.jpeg',
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (1).jpeg',
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (2).jpeg',
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (3).jpeg',
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.04.jpeg',
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.05 (1).jpeg',
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.05 (2).jpeg',
+    '/pictures/WhatsApp Image 2025-12-28 at 22.09.05.jpeg'
+];
+---
+
+<div class="container mx-auto px-4 py-8">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {images.map(image => (
+            <div class="bg-gray-200 rounded-lg overflow-hidden">
+                <img src={image} alt="Gallery image" class="w-full h-full object-cover" />
+            </div>
+        ))}
+    </div>
+</div>
