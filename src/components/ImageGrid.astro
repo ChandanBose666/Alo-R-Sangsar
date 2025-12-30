@@ -16,14 +16,69 @@ const images = [
     '/pictures/WhatsApp Image 2025-12-28 at 22.09.05 (2).jpeg',
     '/pictures/WhatsApp Image 2025-12-28 at 22.09.05.jpeg'
 ];
+
+// Create carousel sets of 5 images
+const imagesPerSlide = 5;
+const slides = [];
+for (let i = 0; i < images.length; i += imagesPerSlide) {
+    slides.push(images.slice(i, i + imagesPerSlide));
+}
 ---
 
 <div class="container mx-auto px-4 py-8">
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {images.map(image => (
-            <div class="bg-gray-200 rounded-lg overflow-hidden">
-                <img src={image} alt="Gallery image" class="w-full h-full object-cover" />
+    <div class="relative w-4/5 mx-auto">
+        <!-- Carousel wrapper -->
+        <div class="relative rounded-lg overflow-hidden" style="height: 200px;">
+            <div id="carousel" class="relative w-full h-full">
+                {slides.map((slideImages, slideIndex) => (
+                    <div 
+                        id={`slide-${slideIndex}`}
+                        class={`absolute inset-0 transition-opacity duration-500 ease-in-out grid grid-cols-5 gap-2 p-2 ${slideIndex === 0 ? 'opacity-100' : 'opacity-0'}`}
+                    >
+                        {slideImages.map((image, imgIndex) => (
+                            <div class="bg-gray-200 rounded overflow-hidden">
+                                <img src={image} alt={`Carousel image ${slideIndex * imagesPerSlide + imgIndex + 1}`} class="w-full h-full object-cover" />
+                            </div>
+                        ))}
+                    </div>
+                ))}
             </div>
-        ))}
+
+            <!-- Left Arrow -->
+            <button 
+                id="prev-btn"
+                class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/90 rounded-full p-2 transition-all z-10"
+                aria-label="Previous slide"
+            >
+                <svg class="w-4 h-4 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+
+            <!-- Right Arrow -->
+            <button 
+                id="next-btn"
+                class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/90 rounded-full p-2 transition-all z-10"
+                aria-label="Next slide"
+            >
+                <svg class="w-4 h-4 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+
+            <!-- Pips/Dots -->
+            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                {slides.map((_, index) => (
+                    <button
+                        id={`dot-${index}`}
+                        class={`w-2 h-2 rounded-full transition-all ${index === 0 ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/75'}`}
+                        aria-label={`Go to slide ${index + 1}`}
+                        data-index={index}
+                    ></button>
+                ))}
+            </div>
+        </div>
     </div>
 </div>
+
+<script src="../scripts/image-grid.ts"></script>
