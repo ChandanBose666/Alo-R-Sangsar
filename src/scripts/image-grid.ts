@@ -66,11 +66,11 @@ class Carousel {
     // Update dots
     this.dots.forEach((dot, i) => {
       if (i === this.currentSlide) {
-        dot.classList.add("bg-white", "w-6");
-        dot.classList.remove("bg-white/50", "hover:bg-white/75");
+        dot.classList.add("bg-gray-900");
+        dot.classList.remove("bg-gray-300");
       } else {
-        dot.classList.remove("bg-white", "w-6");
-        dot.classList.add("bg-white/50", "hover:bg-white/75");
+        dot.classList.remove("bg-gray-900");
+        dot.classList.add("bg-gray-300");
       }
     });
 

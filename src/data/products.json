@@ -1,107 +1,152 @@
 [
   {
     "id": 1,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.00.jpeg",
-    "title": "Smartphone X Pro",
-    "subtitle": "Experience the power of 5G",
-    "price": 999.99
+    "imageUrl": "/pictures/Mother's Love - Bottle.jpeg",
+    "title": "Mother's Love Bottle - Artistic Hand-Painted Glass",
+    "subtitle": "Artistic hand-painted glass bottle",
+    "price": 450,
+    "originalPrice": 600,
+    "discount": "25%",
+    "badge": "Offer"
   },
   {
     "id": 2,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.01.jpeg",
-    "title": "Ultra Slim Laptop",
-    "subtitle": "Lightweight design for creators",
-    "price": 1249.00
+    "imageUrl": "/pictures/Bottle -Twin Pack.jpeg",
+    "title": "Twin Pack Bottles - Elegant Home Decor Set",
+    "subtitle": "Elegant set for home decor",
+    "price": 850,
+    "originalPrice": 1100,
+    "discount": "23%",
+    "badge": "Offer"
   },
   {
     "id": 3,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.02 (1).jpeg",
-    "title": "Noise Cancelling Headphones",
-    "subtitle": "Pure sound, zero distractions",
-    "price": 299.50
+    "imageUrl": "/pictures/Standard Bottle.jpeg",
+    "title": "Standard Bottle Art - Classic Collection Piece",
+    "subtitle": "Classic collection piece",
+    "price": 350,
+    "originalPrice": 500,
+    "discount": "30%",
+    "badge": "Offer"
   },
   {
     "id": 4,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.02 (2).jpeg",
-    "title": "Smart Watch Series 7",
-    "subtitle": "Track your health with precision",
-    "price": 399.00
+    "imageUrl": "/pictures/Premium Design Bottle.jpeg",
+    "title": "Premium Design Bottle - Exquisite Craftmanship",
+    "subtitle": "Exquisite craftmanship",
+    "price": 550,
+    "originalPrice": 750,
+    "discount": "27%",
+    "badge": "Offer"
   },
   {
     "id": 5,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.02.jpeg",
-    "title": "Wireless Earbuds",
-    "subtitle": "Seamless audio experience",
-    "price": 159.99
+    "imageUrl": "/pictures/Tinted Black Bottle.jpeg",
+    "title": "Tinted Black Bottle - Modern Artistic Finish",
+    "subtitle": "Modern artistic finish",
+    "price": 400,
+    "originalPrice": 550,
+    "discount": "27%",
+    "badge": "Offer"
   },
   {
     "id": 6,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.03 (1).jpeg",
-    "title": "4K DSLR Camera",
-    "subtitle": "Capture every moment in detail",
-    "price": 899.00
+    "imageUrl": "/pictures/Circular Cut - Jagannath.jpeg",
+    "title": "Jagannath Wall Art - Traditional Circular Cut",
+    "subtitle": "Traditional circular cut design",
+    "price": 1200,
+    "originalPrice": 1600,
+    "discount": "25%",
+    "badge": "Offer"
   },
   {
     "id": 7,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.03 (2).jpeg",
-    "title": "Portable Bluetooth Speaker",
-    "subtitle": "Rich sound on the go",
-    "price": 79.50
+    "imageUrl": "/pictures/Standard Bottle - Ganesha.jpeg",
+    "title": "Ganesha Standard Bottle - Spiritual Art",
+    "subtitle": "Spiritual hand-painted art",
+    "price": 450,
+    "originalPrice": 650,
+    "discount": "31%",
+    "badge": "Offer"
   },
   {
     "id": 8,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.03.jpeg",
-    "title": "Gaming Console Pro",
-    "subtitle": "Immersive gaming performance",
-    "price": 499.00
+    "imageUrl": "/pictures/Premium Design - The Woman.jpeg",
+    "title": "The Woman Premium - Detailed Figurative Painting",
+    "subtitle": "Detailed figurative painting",
+    "price": 1500,
+    "originalPrice": 2000,
+    "discount": "25%",
+    "badge": "Offer"
   },
   {
     "id": 9,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (1).jpeg",
-    "title": "Mechanical Keyboard",
-    "subtitle": "Precision and comfort",
-    "price": 129.00
+    "imageUrl": "/pictures/Wall Hanging - 3 Layer.jpeg",
+    "title": "3-Layer Wall Hanging - Multi-tier Decoration",
+    "subtitle": "Multi-tier home decoration",
+    "price": 950,
+    "originalPrice": 1300,
+    "discount": "27%",
+    "badge": "Offer"
   },
   {
     "id": 10,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (2).jpeg",
-    "title": "Ergonomic Office Chair",
-    "subtitle": "Work in style and comfort",
-    "price": 249.99
+    "imageUrl": "/pictures/Wall Hanging - 3 Layer Subh Labh.jpeg",
+    "title": "Subh Labh Hanging - Auspicious Festive Decor",
+    "subtitle": "Auspicious festive decor",
+    "price": 1100,
+    "originalPrice": 1500,
+    "discount": "27%",
+    "badge": "Offer"
   },
   {
     "id": 11,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (3).jpeg",
-    "title": "Curved Gaming Monitor",
-    "subtitle": "Ultranarrow bezels, 144Hz",
-    "price": 349.00
+    "imageUrl": "/pictures/Circular Cut - Padma.jpeg",
+    "title": "Padma Lotus Art - Serene Circular Floral Design",
+    "subtitle": "Serene circular floral design",
+    "price": 1300,
+    "originalPrice": 1800,
+    "discount": "28%",
+    "badge": "Offer"
   },
   {
     "id": 12,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.04.jpeg",
-    "title": "Smart Home Hub",
-    "subtitle": "Control everything with your voice",
-    "price": 119.50
+    "imageUrl": "/pictures/Ciscular Cut - Ganesha.jpeg",
+    "title": "Ganesha Circular Cut - Intricate Board Craft",
+    "subtitle": "Intricate wood/board craft",
+    "price": 1250,
+    "originalPrice": 1700,
+    "discount": "26%",
+    "badge": "Offer"
   },
   {
     "id": 13,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.05 (1).jpeg",
-    "title": "Yoga Mat Premium",
-    "subtitle": "Non-slip surface for perfect grip",
-    "price": 45.00
+    "imageUrl": "/pictures/Square Hanging - The Bloom.jpeg",
+    "title": "The Bloom Square - Vibrant Floral Wall Piece",
+    "subtitle": "Vibrant floral wall piece",
+    "price": 1400,
+    "originalPrice": 1900,
+    "discount": "26%",
+    "badge": "Offer"
   },
   {
     "id": 14,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.05 (2).jpeg",
-    "title": "Steel Water Bottle",
-    "subtitle": "Keeps drinks cold for 24 hours",
-    "price": 29.99
+    "imageUrl": "/pictures/Circular Cut - Parvati Shiv.jpeg",
+    "title": "Parvati Shiv Art - Divine Couple Portrait",
+    "subtitle": "Divine couple circular portrait",
+    "price": 1600,
+    "originalPrice": 2200,
+    "discount": "27%",
+    "badge": "Offer"
   },
   {
     "id": 15,
-    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.05.jpeg",
-    "title": "Minimalist Backpack",
-    "subtitle": "Sleek design for daily commute",
-    "price": 85.00
+    "imageUrl": "/pictures/Square Hanging - Krishna.jpeg",
+    "title": "Krishna Square Art - Ethereal Devotional Painting",
+    "subtitle": "Ethereal devotional painting",
+    "price": 1800,
+    "originalPrice": 2500,
+    "discount": "28%",
+    "badge": "Offer"
   }
 ]
