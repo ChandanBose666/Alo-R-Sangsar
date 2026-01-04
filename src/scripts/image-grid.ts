@@ -1,57 +1,98 @@
+class Carousel {
+  container!: HTMLElement;
+  slides: HTMLElement[] = [];
+  dots: HTMLElement[] = [];
+  prevBtn: HTMLElement | null = null;
+  nextBtn: HTMLElement | null = null;
+  currentSlide: number = 0;
+  totalSlides: number = 0;
+  intervalId: any;
 
-    let currentSlide = 0;
-    const carouselSlides: HTMLElement[] = Array.from(document.querySelectorAll('[id^="slide-"]'));
-    const dots: HTMLElement[] = Array.from(document.querySelectorAll('[id^="dot-"]'));
-    const totalSlides = carouselSlides.length;
+  constructor(containerId: string) {
+    const element = document.getElementById(containerId);
+    if (!element) return; // Container might not exist (e.g. valid for hidden viewports if logic separates them, or just safety)
 
-    if (totalSlides === 0) {
-        // Nothing to do if there are no slides
-        console.warn('Carousel: no slides found');
-    } else {
-        function showSlide(index: number) {
-            currentSlide = (index + totalSlides) % totalSlides;
+    this.container = element;
+    // Scope queries to this container
+    this.slides = Array.from(this.container.querySelectorAll("[data-slide]"));
+    this.dots = Array.from(this.container.querySelectorAll("[data-dot]"));
+    this.prevBtn = this.container.querySelector("[data-prev]");
+    this.nextBtn = this.container.querySelector("[data-next]");
 
-            // Update slides
-            carouselSlides.forEach((slide, i) => {
-                slide.classList.toggle('opacity-0', i !== currentSlide);
-                slide.classList.toggle('opacity-100', i === currentSlide);
-            });
+    this.totalSlides = this.slides.length;
 
-            // Update dots
-            dots.forEach((dot, i) => {
-                if (i === currentSlide) {
-                    dot.classList.add('bg-white');
-                    dot.classList.add('w-6');
-                    dot.classList.remove('bg-white/50');
-                    dot.classList.remove('hover:bg-white/75');
-                } else {
-                    dot.classList.remove('bg-white');
-                    dot.classList.remove('w-6');
-                    dot.classList.add('bg-white/50');
-                    dot.classList.add('hover:bg-white/75');
-                }
-            });
-        }
+    if (this.totalSlides === 0) return;
 
-        // Arrow navigation (guard for missing buttons)
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        if (prevBtn) prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
-        if (nextBtn) nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+    this.init();
+  }
 
-        // Dot navigation
-        dots.forEach((dot) => {
-            dot.addEventListener('click', () => {
-                const idx = dot.dataset.index;
-                if (typeof idx !== 'undefined') showSlide(parseInt(idx, 10));
-            });
-        });
+  init() {
+    // Arrow listeners
+    if (this.prevBtn)
+      this.prevBtn.addEventListener("click", () =>
+        this.showSlide(this.currentSlide - 1)
+      );
+    if (this.nextBtn)
+      this.nextBtn.addEventListener("click", () =>
+        this.showSlide(this.currentSlide + 1)
+      );
 
-        // Optional: Auto-advance every 5 seconds
-        setInterval(() => {
-            showSlide(currentSlide + 1);
-        }, 5000);
+    // Dot listeners
+    this.dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => this.showSlide(index));
+    });
 
-        // Show initial slide
-        showSlide(0);
-    }
+    // Auto-play
+    this.startAutoPlay();
+
+    // Initial render
+    this.showSlide(0);
+  }
+
+  showSlide(index: number) {
+    this.currentSlide = (index + this.totalSlides) % this.totalSlides;
+
+    // Update slides visibility
+    this.slides.forEach((slide, i) => {
+      if (i === this.currentSlide) {
+        slide.classList.remove("opacity-0", "pointer-events-none");
+        slide.classList.add("opacity-100", "z-10");
+      } else {
+        slide.classList.remove("opacity-100", "z-10");
+        slide.classList.add("opacity-0", "pointer-events-none");
+      }
+    });
+
+    // Update dots
+    this.dots.forEach((dot, i) => {
+      if (i === this.currentSlide) {
+        dot.classList.add("bg-white", "w-6");
+        dot.classList.remove("bg-white/50", "hover:bg-white/75");
+      } else {
+        dot.classList.remove("bg-white", "w-6");
+        dot.classList.add("bg-white/50", "hover:bg-white/75");
+      }
+    });
+
+    // Reset timer on manual interaction
+    this.resetAutoPlay();
+  }
+
+  startAutoPlay() {
+    this.intervalId = setInterval(() => {
+      this.showSlide(this.currentSlide + 1);
+    }, 5000);
+  }
+
+  resetAutoPlay() {
+    clearInterval(this.intervalId);
+    this.startAutoPlay();
+  }
+}
+
+// Initialize carousels when DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+  new Carousel("desktop-carousel");
+  new Carousel("tablet-carousel");
+  new Carousel("mobile-carousel");
+});

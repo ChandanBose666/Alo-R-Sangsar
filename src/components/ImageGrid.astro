@@ -1,84 +1,255 @@
 ---
 const images = [
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.00.jpeg',
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.01.jpeg',
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.02 (1).jpeg',
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.02 (2).jpeg',
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.02.jpeg',
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.03 (1).jpeg',
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.03 (2).jpeg',
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.03.jpeg',
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (1).jpeg',
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (2).jpeg',
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (3).jpeg',
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.04.jpeg',
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.05 (1).jpeg',
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.05 (2).jpeg',
-    '/pictures/WhatsApp Image 2025-12-28 at 22.09.05.jpeg'
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.00.jpeg",
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.01.jpeg",
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.02 (1).jpeg",
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.02 (2).jpeg",
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.02.jpeg",
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.03 (1).jpeg",
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.03 (2).jpeg",
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.03.jpeg",
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (1).jpeg",
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (2).jpeg",
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (3).jpeg",
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.04.jpeg",
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.05 (1).jpeg",
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.05 (2).jpeg",
+  "/pictures/WhatsApp Image 2025-12-28 at 22.09.05.jpeg",
 ];
 
-// Create carousel sets of 5 images
-const imagesPerSlide = 5;
-const slides = [];
-for (let i = 0; i < images.length; i += imagesPerSlide) {
-    slides.push(images.slice(i, i + imagesPerSlide));
+// Create carousel sets of 5 images (Desktop)
+const imagesPerSlideDesktop = 5;
+const slidesDesktop = [];
+for (let i = 0; i < images.length; i += imagesPerSlideDesktop) {
+  slidesDesktop.push(images.slice(i, i + imagesPerSlideDesktop));
+}
+
+// Create carousel sets of 3 images (Tablet)
+const imagesPerSlideTablet = 3;
+const slidesTablet = [];
+for (let i = 0; i < images.length; i += imagesPerSlideTablet) {
+  slidesTablet.push(images.slice(i, i + imagesPerSlideTablet));
 }
 ---
 
 <div class="container mx-auto px-4 py-8">
-    <div class="relative w-4/5 mx-auto">
-        <!-- Carousel wrapper -->
-        <div class="relative rounded-lg overflow-hidden" style="height: 200px;">
-            <div id="carousel" class="relative w-full h-full">
-                {slides.map((slideImages, slideIndex) => (
-                    <div 
-                        id={`slide-${slideIndex}`}
-                        class={`absolute inset-0 transition-opacity duration-500 ease-in-out grid grid-cols-5 gap-2 p-2 ${slideIndex === 0 ? 'opacity-100' : 'opacity-0'}`}
-                    >
-                        {slideImages.map((image, imgIndex) => (
-                            <div class="bg-gray-200 rounded overflow-hidden">
-                                <img src={image} alt={`Carousel image ${slideIndex * imagesPerSlide + imgIndex + 1}`} class="w-full h-full object-cover" />
-                            </div>
-                        ))}
-                    </div>
-                ))}
-            </div>
-
-            <!-- Left Arrow -->
-            <button 
-                id="prev-btn"
-                class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/90 rounded-full p-2 transition-all z-10"
-                aria-label="Previous slide"
+  <div class="relative w-full md:w-4/5 mx-auto">
+    <!-- Desktop Carousel (5 items, XL+) -->
+    <div
+      id="desktop-carousel"
+      class="hidden xl:block relative rounded-lg overflow-hidden min-h-[200px]"
+    >
+      <div class="relative w-full h-full">
+        {
+          slidesDesktop.map((slideImages, slideIndex) => (
+            <div
+              data-slide
+              class="absolute inset-0 transition-opacity duration-500 ease-in-out grid grid-cols-5 gap-2 p-2 opacity-0"
             >
-                <svg class="w-4 h-4 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                </svg>
-            </button>
-
-            <!-- Right Arrow -->
-            <button 
-                id="next-btn"
-                class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/90 rounded-full p-2 transition-all z-10"
-                aria-label="Next slide"
-            >
-                <svg class="w-4 h-4 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-            </button>
-
-            <!-- Pips/Dots -->
-            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                {slides.map((_, index) => (
-                    <button
-                        id={`dot-${index}`}
-                        class={`w-2 h-2 rounded-full transition-all ${index === 0 ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/75'}`}
-                        aria-label={`Go to slide ${index + 1}`}
-                        data-index={index}
-                    ></button>
-                ))}
+              {slideImages.map((image, imgIndex) => (
+                <div class="bg-gray-200 rounded overflow-hidden aspect-square">
+                  <img
+                    src={image}
+                    alt={`Desktop image ${slideIndex * imagesPerSlideDesktop + imgIndex + 1}`}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
             </div>
-        </div>
+          ))
+        }
+      </div>
+
+      <button
+        data-prev
+        class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/90 rounded-full p-2 transition-all z-20"
+      >
+        <svg
+          class="w-4 h-4 text-gray-800"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"></path></svg
+        >
+      </button>
+      <button
+        data-next
+        class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/90 rounded-full p-2 transition-all z-20"
+      >
+        <svg
+          class="w-4 h-4 text-gray-800"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path></svg
+        >
+      </button>
+
+      <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        {
+          slidesDesktop.map((_, index) => (
+            <button
+              data-dot
+              class="w-2 h-2 rounded-full bg-white/50 transition-all hover:bg-white/75"
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))
+        }
+      </div>
     </div>
+
+    <!-- Tablet Carousel (3 items, MD to XL) -->
+    <div
+      id="tablet-carousel"
+      class="hidden md:block xl:hidden relative rounded-lg overflow-hidden min-h-[200px]"
+    >
+      <div class="relative w-full h-full">
+        {
+          slidesTablet.map((slideImages, slideIndex) => (
+            <div
+              data-slide
+              class="absolute inset-0 transition-opacity duration-500 ease-in-out grid grid-cols-3 gap-2 p-2 opacity-0"
+            >
+              {slideImages.map((image, imgIndex) => (
+                <div class="bg-gray-200 rounded overflow-hidden aspect-square">
+                  <img
+                    src={image}
+                    alt={`Tablet image ${slideIndex * imagesPerSlideTablet + imgIndex + 1}`}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          ))
+        }
+      </div>
+
+      <button
+        data-prev
+        class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/90 rounded-full p-2 transition-all z-20"
+      >
+        <svg
+          class="w-4 h-4 text-gray-800"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"></path></svg
+        >
+      </button>
+      <button
+        data-next
+        class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/90 rounded-full p-2 transition-all z-20"
+      >
+        <svg
+          class="w-4 h-4 text-gray-800"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path></svg
+        >
+      </button>
+
+      <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        {
+          slidesTablet.map((_, index) => (
+            <button
+              data-dot
+              class="w-2 h-2 rounded-full bg-white/50 transition-all hover:bg-white/75"
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Mobile Carousel (1 item, Hidden on MD+) -->
+    <div
+      id="mobile-carousel"
+      class="md:hidden relative rounded-lg overflow-hidden min-h-[300px]"
+    >
+      <div class="relative w-full h-full">
+        {
+          images.map((image, index) => (
+            <div
+              data-slide
+              class="absolute inset-0 transition-opacity duration-500 ease-in-out p-2 opacity-0 flex justify-center items-center"
+            >
+              <div class="bg-gray-200 rounded overflow-hidden aspect-square w-full max-w-[300px] shadow-sm">
+                <img
+                  src={image}
+                  alt={`Mobile image ${index + 1}`}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <button
+        data-prev
+        class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/90 rounded-full p-2 transition-all z-20"
+      >
+        <svg
+          class="w-4 h-4 text-gray-800"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"></path></svg
+        >
+      </button>
+      <button
+        data-next
+        class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/60 hover:bg-white/90 rounded-full p-2 transition-all z-20"
+      >
+        <svg
+          class="w-4 h-4 text-gray-800"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path></svg
+        >
+      </button>
+
+      <div
+        class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-20 flex-wrap justify-center max-w-[80%]"
+      >
+        {
+          images.map((_, index) => (
+            <button
+              data-dot
+              class="w-2 h-2 rounded-full bg-white/50 transition-all hover:bg-white/75"
+              aria-label={`Go to image ${index + 1}`}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="../scripts/image-grid.ts"></script>
