@@ -1,34 +1,18 @@
 ---
-const images = [
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.00.jpeg",
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.01.jpeg",
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.02 (1).jpeg",
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.02 (2).jpeg",
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.02.jpeg",
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.03 (1).jpeg",
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.03 (2).jpeg",
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.03.jpeg",
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (1).jpeg",
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (2).jpeg",
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (3).jpeg",
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.04.jpeg",
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.05 (1).jpeg",
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.05 (2).jpeg",
-  "/pictures/WhatsApp Image 2025-12-28 at 22.09.05.jpeg",
-];
+import products from "../data/products.json";
 
-// Create carousel sets of 5 images (Desktop)
-const imagesPerSlideDesktop = 5;
+// Create carousel sets of 5 products (Desktop)
+const itemsPerSlideDesktop = 5;
 const slidesDesktop = [];
-for (let i = 0; i < images.length; i += imagesPerSlideDesktop) {
-  slidesDesktop.push(images.slice(i, i + imagesPerSlideDesktop));
+for (let i = 0; i < products.length; i += itemsPerSlideDesktop) {
+  slidesDesktop.push(products.slice(i, i + itemsPerSlideDesktop));
 }
 
-// Create carousel sets of 3 images (Tablet)
-const imagesPerSlideTablet = 3;
+// Create carousel sets of 3 products (Tablet)
+const itemsPerSlideTablet = 3;
 const slidesTablet = [];
-for (let i = 0; i < images.length; i += imagesPerSlideTablet) {
-  slidesTablet.push(images.slice(i, i + imagesPerSlideTablet));
+for (let i = 0; i < products.length; i += itemsPerSlideTablet) {
+  slidesTablet.push(products.slice(i, i + itemsPerSlideTablet));
 }
 ---
 
@@ -41,18 +25,29 @@ for (let i = 0; i < images.length; i += imagesPerSlideTablet) {
     >
       <div class="relative w-full h-full">
         {
-          slidesDesktop.map((slideImages, slideIndex) => (
+          slidesDesktop.map((slideProducts, slideIndex) => (
             <div
               data-slide
-              class="absolute inset-0 transition-opacity duration-500 ease-in-out grid grid-cols-5 gap-2 p-2 opacity-0"
+              class="absolute inset-0 transition-opacity duration-500 ease-in-out grid grid-cols-5 gap-3 p-2 opacity-0"
             >
-              {slideImages.map((image, imgIndex) => (
-                <div class="bg-gray-200 rounded overflow-hidden aspect-square">
+              {slideProducts.map((product) => (
+                <div class="group relative bg-white rounded-xl overflow-hidden aspect-square shadow-sm hover:shadow-xl transition-all duration-300">
                   <img
-                    src={image}
-                    alt={`Desktop image ${slideIndex * imagesPerSlideDesktop + imgIndex + 1}`}
-                    class="w-full h-full object-cover"
+                    src={product.imageUrl}
+                    alt={product.title}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white">
+                    <h3 class="font-bold text-sm lg:text-base line-clamp-1">
+                      {product.title}
+                    </h3>
+                    <p class="text-[10px] lg:text-xs opacity-80 line-clamp-1 mb-1">
+                      {product.subtitle}
+                    </p>
+                    <p class="font-bold text-orange-400 text-sm">
+                      ${product.price}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -113,18 +108,29 @@ for (let i = 0; i < images.length; i += imagesPerSlideTablet) {
     >
       <div class="relative w-full h-full">
         {
-          slidesTablet.map((slideImages, slideIndex) => (
+          slidesTablet.map((slideProducts, slideIndex) => (
             <div
               data-slide
-              class="absolute inset-0 transition-opacity duration-500 ease-in-out grid grid-cols-3 gap-2 p-2 opacity-0"
+              class="absolute inset-0 transition-opacity duration-500 ease-in-out grid grid-cols-3 gap-3 p-2 opacity-0"
             >
-              {slideImages.map((image, imgIndex) => (
-                <div class="bg-gray-200 rounded overflow-hidden aspect-square">
+              {slideProducts.map((product) => (
+                <div class="group relative bg-white rounded-xl overflow-hidden aspect-square shadow-sm hover:shadow-xl transition-all duration-300">
                   <img
-                    src={image}
-                    alt={`Tablet image ${slideIndex * imagesPerSlideTablet + imgIndex + 1}`}
-                    class="w-full h-full object-cover"
+                    src={product.imageUrl}
+                    alt={product.title}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white">
+                    <h3 class="font-bold text-sm line-clamp-1">
+                      {product.title}
+                    </h3>
+                    <p class="text-[10px] opacity-80 line-clamp-1 mb-1">
+                      {product.subtitle}
+                    </p>
+                    <p class="font-bold text-orange-400 text-sm">
+                      ${product.price}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -185,17 +191,24 @@ for (let i = 0; i < images.length; i += imagesPerSlideTablet) {
     >
       <div class="relative w-full h-full">
         {
-          images.map((image, index) => (
+          products.map((product) => (
             <div
               data-slide
               class="absolute inset-0 transition-opacity duration-500 ease-in-out p-2 opacity-0 flex justify-center items-center"
             >
-              <div class="bg-gray-200 rounded overflow-hidden aspect-square w-full max-w-[300px] shadow-sm">
+              <div class="group relative bg-white rounded-2xl overflow-hidden aspect-square w-full max-w-[320px] shadow-lg">
                 <img
-                  src={image}
-                  alt={`Mobile image ${index + 1}`}
+                  src={product.imageUrl}
+                  alt={product.title}
                   class="w-full h-full object-cover"
                 />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 text-white">
+                  <h3 class="font-bold text-lg mb-1">{product.title}</h3>
+                  <p class="text-sm opacity-90 mb-2">{product.subtitle}</p>
+                  <p class="font-extrabold text-orange-400 text-xl">
+                    ${product.price}
+                  </p>
+                </div>
               </div>
             </div>
           ))
@@ -239,7 +252,7 @@ for (let i = 0; i < images.length; i += imagesPerSlideTablet) {
         class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-20 flex-wrap justify-center max-w-[80%]"
       >
         {
-          images.map((_, index) => (
+          products.map((_, index) => (
             <button
               data-dot
               class="w-2 h-2 rounded-full bg-white/50 transition-all hover:bg-white/75"

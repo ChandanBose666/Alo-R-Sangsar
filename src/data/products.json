@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.00.jpeg",
+    "title": "Smartphone X Pro",
+    "subtitle": "Experience the power of 5G",
+    "price": 999.99
+  },
+  {
+    "id": 2,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.01.jpeg",
+    "title": "Ultra Slim Laptop",
+    "subtitle": "Lightweight design for creators",
+    "price": 1249.00
+  },
+  {
+    "id": 3,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.02 (1).jpeg",
+    "title": "Noise Cancelling Headphones",
+    "subtitle": "Pure sound, zero distractions",
+    "price": 299.50
+  },
+  {
+    "id": 4,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.02 (2).jpeg",
+    "title": "Smart Watch Series 7",
+    "subtitle": "Track your health with precision",
+    "price": 399.00
+  },
+  {
+    "id": 5,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.02.jpeg",
+    "title": "Wireless Earbuds",
+    "subtitle": "Seamless audio experience",
+    "price": 159.99
+  },
+  {
+    "id": 6,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.03 (1).jpeg",
+    "title": "4K DSLR Camera",
+    "subtitle": "Capture every moment in detail",
+    "price": 899.00
+  },
+  {
+    "id": 7,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.03 (2).jpeg",
+    "title": "Portable Bluetooth Speaker",
+    "subtitle": "Rich sound on the go",
+    "price": 79.50
+  },
+  {
+    "id": 8,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.03.jpeg",
+    "title": "Gaming Console Pro",
+    "subtitle": "Immersive gaming performance",
+    "price": 499.00
+  },
+  {
+    "id": 9,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (1).jpeg",
+    "title": "Mechanical Keyboard",
+    "subtitle": "Precision and comfort",
+    "price": 129.00
+  },
+  {
+    "id": 10,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (2).jpeg",
+    "title": "Ergonomic Office Chair",
+    "subtitle": "Work in style and comfort",
+    "price": 249.99
+  },
+  {
+    "id": 11,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.04 (3).jpeg",
+    "title": "Curved Gaming Monitor",
+    "subtitle": "Ultranarrow bezels, 144Hz",
+    "price": 349.00
+  },
+  {
+    "id": 12,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.04.jpeg",
+    "title": "Smart Home Hub",
+    "subtitle": "Control everything with your voice",
+    "price": 119.50
+  },
+  {
+    "id": 13,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.05 (1).jpeg",
+    "title": "Yoga Mat Premium",
+    "subtitle": "Non-slip surface for perfect grip",
+    "price": 45.00
+  },
+  {
+    "id": 14,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.05 (2).jpeg",
+    "title": "Steel Water Bottle",
+    "subtitle": "Keeps drinks cold for 24 hours",
+    "price": 29.99
+  },
+  {
+    "id": 15,
+    "imageUrl": "/pictures/WhatsApp Image 2025-12-28 at 22.09.05.jpeg",
+    "title": "Minimalist Backpack",
+    "subtitle": "Sleek design for daily commute",
+    "price": 85.00
+  }
+]
