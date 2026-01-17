@@ -1,16 +1,16 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import Posts from '../components/Posts.astro';
-import Footer from '../components/Footer.astro';
-import ImageGrid from '../components/ImageGrid.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Posts from "../components/Posts.astro";
+import Footer from "../components/Footer.astro";
+import ImageGrid from "../components/ImageGrid.astro";
 ---
 
 <Layout>
-	<Navbar />
-	<Hero />
-	<ImageGrid />
-	<Posts />
-	<Footer />
+  <Navbar />
+  <Hero />
+  <ImageGrid showSaleModal={true} />
+  <Posts />
+  <Footer />
 </Layout>

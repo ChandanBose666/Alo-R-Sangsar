@@ -13,6 +13,7 @@ import ProductHeader from "../../components/products/ProductHeader.astro";
 import ProductSelection from "../../components/products/ProductSelection.astro";
 import PaymentRewards from "../../components/products/PaymentRewards.astro";
 import ProductStatus from "../../components/products/ProductStatus.astro";
+import ManualRecommendations from "../../components/products/ManualRecommendations.astro";
 
 export async function getStaticPaths() {
   return products.map((product) => ({
@@ -36,7 +37,7 @@ const breadcrumbItems = [
     <div class="container mx-auto px-4">
       <Breadcrumbs items={breadcrumbItems} />
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-20">
         <!-- Left Column: Image Gallery -->
         <ProductGallery
           mainImage={product.imageUrl}
@@ -66,6 +67,9 @@ const breadcrumbItems = [
           <ProductStatus />
         </div>
       </div>
+
+      <!-- Similar Items Carousel -->
+      <ManualRecommendations currentProductId={product.id} />
     </div>
   </main>
 

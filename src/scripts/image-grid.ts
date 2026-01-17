@@ -92,47 +92,70 @@ class Carousel {
 
 // Initialize carousels and modal when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-  new Carousel("desktop-carousel");
-  new Carousel("tablet-carousel");
-  new Carousel("mobile-carousel");
+  const initCarousels = () => {
+    // Look for all desktop, tablet, and mobile carousel containers
+    const desktopCarousels = document.querySelectorAll('.desktop-carousel-container');
+    const tabletCarousels = document.querySelectorAll('.tablet-carousel-container');
+    const mobileCarousels = document.querySelectorAll('.mobile-carousel-container');
 
-  const modal = document.getElementById('sale-modal');
-  const modalContent = document.getElementById('sale-modal-content');
-  const closeBtn = document.getElementById('close-modal');
-  const saleBadges = document.querySelectorAll('[data-sale-badge]');
-
-  const openModal = () => {
-    if (!modal || !modalContent) return;
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    // Force reflow for animation
-    void modal.offsetWidth;
-    modalContent.classList.remove('scale-95', 'opacity-0');
-    modalContent.classList.add('scale-100', 'opacity-100');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeModal = () => {
-    if (!modal || !modalContent) return;
-    modalContent.classList.add('scale-95', 'opacity-0');
-    modalContent.classList.remove('scale-100', 'opacity-100');
-    setTimeout(() => {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.body.style.overflow = '';
-    }, 300);
-  };
-
-  saleBadges.forEach(badge => {
-    badge.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      openModal();
+    desktopCarousels.forEach(container => {
+        new Carousel(container.id);
     });
-  });
+    tabletCarousels.forEach(container => {
+        new Carousel(container.id);
+    });
+    mobileCarousels.forEach(container => {
+        new Carousel(container.id);
+    });
+  };
 
-  closeBtn?.addEventListener('click', closeModal);
-  modal?.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
+  initCarousels();
+
+  // Handle Astro's View Transitions if they exist
+  document.addEventListener("astro:after-swap", initCarousels);
+
+  const initModal = () => {
+    const modal = document.getElementById('sale-modal');
+    const modalContent = document.getElementById('sale-modal-content');
+    const closeBtn = document.getElementById('close-modal');
+    const saleBadges = document.querySelectorAll('[data-sale-badge]');
+
+    if (!modal || !modalContent) return;
+
+    const openModal = () => {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      // Force reflow for animation
+      void modal.offsetWidth;
+      modalContent.classList.remove('scale-95', 'opacity-0');
+      modalContent.classList.add('scale-100', 'opacity-100');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+      modalContent.classList.add('scale-95', 'opacity-0');
+      modalContent.classList.remove('scale-100', 'opacity-100');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }, 300);
+    };
+
+    saleBadges.forEach(badge => {
+      badge.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal();
+      });
+    });
+
+    closeBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  };
+
+  initModal();
+  document.addEventListener("astro:after-swap", initModal);
 });
