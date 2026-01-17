@@ -1,0 +1,24 @@
+---
+import ImageGrid from "../ImageGrid.astro";
+import products from "../../data/products.json";
+
+interface Props {
+  currentProductId: string | number;
+}
+
+const { currentProductId } = Astro.props;
+
+// Filter out the current product and suggest others
+// For now, we just exclude current and show the rest. In a real app, you might filter by category.
+const recommendedProducts = products.filter(
+  (p) => p.id.toString() !== currentProductId.toString(),
+);
+---
+
+<section class="border-t border-gray-100 mt-20">
+  <ImageGrid
+    products={recommendedProducts}
+    title="You may also like"
+    showSaleModal={false}
+  />
+</section>
