@@ -1,0 +1,115 @@
+---
+interface Props {
+  sizes?: string[];
+}
+
+const { sizes } = Astro.props;
+---
+
+<div class="space-y-8 mb-10">
+  {
+    sizes && (
+      <div>
+        <label class="text-xs font-bold uppercase tracking-widest text-gray-900 mb-4 block">
+          Select Size
+        </label>
+        <div class="flex flex-wrap gap-3">
+          {sizes.map((size, index) => (
+            <button
+              class={`px-6 py-3 border-2 text-sm font-semibold transition-all ${index === 1 ? "border-black bg-black text-white" : "border-gray-200 hover:border-gray-400"}`}
+            >
+              {size}
+            </button>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  <div class="flex gap-4">
+    <div class="flex-1">
+      <label
+        class="text-xs font-bold uppercase tracking-widest text-gray-900 mb-4 block"
+      >
+        Quantity
+      </label>
+      <div
+        class="flex items-center border-2 border-gray-200 rounded-lg w-fit h-[56px]"
+      >
+        <button
+          class="px-5 h-full hover:bg-gray-50 transition-colors border-r"
+          id="minus">-</button
+        >
+        <input
+          type="number"
+          value="1"
+          min="1"
+          class="w-16 text-center font-bold focus:outline-none h-full"
+        />
+        <button
+          class="px-5 h-full hover:bg-gray-50 transition-colors border-l"
+          id="plus">+</button
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA Buttons -->
+<div class="flex gap-4">
+  <button
+    class="flex-[3] bg-black text-white py-5 rounded-lg font-bold uppercase tracking-widest hover:bg-gray-800 transition-all transform active:scale-[0.98]"
+  >
+    Add to Basket
+  </button>
+  <button
+    class="flex-1 border-2 border-gray-200 rounded-lg flex items-center justify-center hover:border-black transition-colors group"
+  >
+    <svg
+      class="w-6 h-6 text-gray-400 group-hover:text-red-500 transition-colors"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.5"
+        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+      ></path>
+    </svg>
+  </button>
+</div>
+
+<style>
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>
+
+<script>
+  function setupQuantity() {
+    const plusBtn = document.getElementById("plus");
+    const minusBtn = document.getElementById("minus");
+    const quantityInput = document.querySelector(
+      'input[type="number"]',
+    ) as HTMLInputElement;
+
+    if (plusBtn && minusBtn && quantityInput) {
+      plusBtn.addEventListener("click", () => {
+        quantityInput.value = (parseInt(quantityInput.value) + 1).toString();
+      });
+
+      minusBtn.addEventListener("click", () => {
+        if (parseInt(quantityInput.value) > 1) {
+          quantityInput.value = (parseInt(quantityInput.value) - 1).toString();
+        }
+      });
+    }
+  }
+
+  setupQuantity();
+  document.addEventListener("astro:after-swap", setupQuantity);
+</script>

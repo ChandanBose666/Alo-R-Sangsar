@@ -1,0 +1,59 @@
+---
+interface Props {
+  price: number;
+}
+
+const { price } = Astro.props;
+---
+
+<!-- Payment Info -->
+<div
+  class="p-4 border border-gray-100 rounded-xl mb-8 flex items-center justify-between bg-gray-50/50"
+>
+  <div class="flex items-center gap-3 text-sm">
+    <span class="font-bold lowercase italic text-lg tracking-tighter"
+      >clearpay<span class="text-orange-500">✨</span></span
+    >
+    <span class="text-gray-500"
+      >4 installments of ₹{(price / 4).toFixed(2)}</span
+    >
+  </div>
+  <button
+    class="text-xs font-bold underline uppercase tracking-widest hover:text-orange-500"
+    >Info</button
+  >
+</div>
+
+<!-- Reward Points -->
+<div
+  class="bg-gray-900 text-white p-4 rounded-xl mb-10 flex items-center justify-between"
+>
+  <div class="flex items-center gap-3">
+    <div class="bg-white/20 p-2 rounded-lg">
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z"
+        ></path>
+      </svg>
+    </div>
+    <div>
+      <p class="text-sm font-medium">
+        Earn <span class="font-bold">{Math.floor(price / 10)} points</span>
+      </p>
+      <p class="text-[10px] text-gray-400 uppercase tracking-widest">
+        Join our loyalty program
+      </p>
+    </div>
+  </div>
+  <button class="text-xs font-bold underline uppercase tracking-widest"
+    >Join now</button
+  >
+</div>
