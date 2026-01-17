@@ -4,149 +4,245 @@
     "imageUrl": "/pictures/Mother's Love - Bottle.jpeg",
     "title": "Mother's Love Bottle - Artistic Hand-Painted Glass",
     "subtitle": "Artistic hand-painted glass bottle",
+    "description": "This exquisite hand-painted glass bottle, titled 'Mother's Love', is a masterpiece of craftsmanship. Each stroke tells a story of affection and care, making it a perfect gift or a centerpiece for your home decor. The vibrant colors are sealed for durability, ensuring the art remains as vivid as the day it was created.",
     "price": 450,
     "originalPrice": 600,
     "discount": "25%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["Small", "Medium", "Large"],
+    "reviewsCount": 12,
+    "images": [
+      "/pictures/Mother's Love - Bottle.jpeg",
+      "/pictures/Standard Bottle.jpeg",
+      "/pictures/Premium Design Bottle.jpeg"
+    ]
   },
   {
     "id": 2,
     "imageUrl": "/pictures/Bottle -Twin Pack.jpeg",
     "title": "Twin Pack Bottles - Elegant Home Decor Set",
     "subtitle": "Elegant set for home decor",
+    "description": "Elevate your home aesthetics with this elegant twin pack of hand-painted bottles. Designed to complement each other, these pieces bring a touch of sophisticated artistry to any shelf or mantelpiece. Hand-crafted with premium pigments on high-quality glass.",
     "price": 850,
     "originalPrice": 1100,
     "discount": "23%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["Standard Pack"],
+    "reviewsCount": 8,
+    "images": [
+      "/pictures/Bottle -Twin Pack.jpeg",
+      "/pictures/Standard Bottle - Ganesha.jpeg"
+    ]
   },
   {
     "id": 3,
     "imageUrl": "/pictures/Standard Bottle.jpeg",
     "title": "Standard Bottle Art - Classic Collection Piece",
     "subtitle": "Classic collection piece",
+    "description": "A cornerstone of our collection, this standard bottle features classic hand-painted motifs that celebrate traditional artistry. Versatile and timeless, it fits seamlessly into both modern and traditional interiors.",
     "price": 350,
     "originalPrice": 500,
     "discount": "30%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["Small", "Standard"],
+    "reviewsCount": 15,
+    "images": [
+      "/pictures/Standard Bottle.jpeg",
+      "/pictures/Tinted Black Bottle.jpeg"
+    ]
   },
   {
     "id": 4,
     "imageUrl": "/pictures/Premium Design Bottle.jpeg",
     "title": "Premium Design Bottle - Exquisite Craftmanship",
     "subtitle": "Exquisite craftmanship",
+    "description": "Our premium design bottle is the epitome of exquisite craftsmanship. Featuring intricate details and a vibrant palette, this piece is designed for those who appreciate the finer things in life. Each bottle is uniquely hand-painted by master artisans.",
     "price": 550,
     "originalPrice": 750,
     "discount": "27%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["Standard", "Large"],
+    "reviewsCount": 6,
+    "images": [
+      "/pictures/Premium Design Bottle.jpeg",
+      "/pictures/Mother's Love - Bottle.jpeg"
+    ]
   },
   {
     "id": 5,
     "imageUrl": "/pictures/Tinted Black Bottle.jpeg",
     "title": "Tinted Black Bottle - Modern Artistic Finish",
     "subtitle": "Modern artistic finish",
+    "description": "Sleek, modern, and undeniably artistic. Our tinted black bottle features a sophisticated finish that serves as the perfect canvas for contemporary hand-painted designs. A bold statement piece for any room.",
     "price": 400,
     "originalPrice": 550,
     "discount": "27%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["Standard"],
+    "reviewsCount": 10,
+    "images": [
+      "/pictures/Tinted Black Bottle.jpeg"
+    ]
   },
   {
     "id": 6,
     "imageUrl": "/pictures/Circular Cut - Jagannath.jpeg",
     "title": "Jagannath Wall Art - Traditional Circular Cut",
     "subtitle": "Traditional circular cut design",
+    "description": "Bring divine energy into your home with this traditional Jagannath wall art. Hand-painted on a unique circular wood cut, this piece captures the essence of spiritual heritage with vibrant colors and meticulous detailing.",
     "price": 1200,
     "originalPrice": 1600,
     "discount": "25%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["12 inch", "15 inch"],
+    "reviewsCount": 24,
+    "images": [
+      "/pictures/Circular Cut - Jagannath.jpeg"
+    ]
   },
   {
     "id": 7,
     "imageUrl": "/pictures/Standard Bottle - Ganesha.jpeg",
     "title": "Ganesha Standard Bottle - Spiritual Art",
     "subtitle": "Spiritual hand-painted art",
+    "description": "Celebrate spirituality with this hand-painted Ganesha bottle. The deity of wisdom and beginnings is beautifully rendered in vibrant hues, making this bottle a meaningful addition to your spiritual corner or a thoughtful gift.",
     "price": 450,
     "originalPrice": 650,
     "discount": "31%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["Standard"],
+    "reviewsCount": 18,
+    "images": [
+      "/pictures/Standard Bottle - Ganesha.jpeg"
+    ]
   },
   {
     "id": 8,
     "imageUrl": "/pictures/Premium Design - The Woman.jpeg",
     "title": "The Woman Premium - Detailed Figurative Painting",
     "subtitle": "Detailed figurative painting",
+    "description": "A stunning tribute to femininity through detailed figurative painting. This premium piece features complex layers and a rich color palette, showcasing the artist's ability to capture depth and emotion on glass.",
     "price": 1500,
     "originalPrice": 2000,
     "discount": "25%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["Large"],
+    "reviewsCount": 5,
+    "images": [
+      "/pictures/Premium Design - The Woman.jpeg"
+    ]
   },
   {
     "id": 9,
     "imageUrl": "/pictures/Wall Hanging - 3 Layer.jpeg",
     "title": "3-Layer Wall Hanging - Multi-tier Decoration",
     "subtitle": "Multi-tier home decoration",
+    "description": "A dynamic 3-layer wall hanging that adds vertical interest and artistic flair to your walls. Each tier is hand-painted with coordinating designs, creating a cohesive and eye-catching decorative piece.",
     "price": 950,
     "originalPrice": 1300,
     "discount": "27%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["Standard"],
+    "reviewsCount": 9,
+    "images": [
+      "/pictures/Wall Hanging - 3 Layer.jpeg"
+    ]
   },
   {
     "id": 10,
     "imageUrl": "/pictures/Wall Hanging - 3 Layer Subh Labh.jpeg",
     "title": "Subh Labh Hanging - Auspicious Festive Decor",
     "subtitle": "Auspicious festive decor",
+    "description": "Invoke prosperity and goodwill with this auspicious Subh Labh 3-layer hanging. Perfect for entrances or prayer rooms, this piece combines traditional symbolism with contemporary hand-painted artistry.",
     "price": 1100,
     "originalPrice": 1500,
     "discount": "27%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["Standard"],
+    "reviewsCount": 14,
+    "images": [
+      "/pictures/Wall Hanging - 3 Layer Subh Labh.jpeg"
+    ]
   },
   {
     "id": 11,
     "imageUrl": "/pictures/Circular Cut - Padma.jpeg",
     "title": "Padma Lotus Art - Serene Circular Floral Design",
     "subtitle": "Serene circular floral design",
+    "description": "The Padma (Lotus) symbolizes purity and serenity. This hand-painted circular cut piece brings a calming floral atmosphere to your home, executed with delicate brushwork and a soft, soothing color palette.",
     "price": 1300,
     "originalPrice": 1800,
     "discount": "28%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["12 inch"],
+    "reviewsCount": 7,
+    "images": [
+      "/pictures/Circular Cut - Padma.jpeg"
+    ]
   },
   {
     "id": 12,
     "imageUrl": "/pictures/Ciscular Cut - Ganesha.jpeg",
     "title": "Ganesha Circular Cut - Intricate Board Craft",
     "subtitle": "Intricate wood/board craft",
+    "description": "This intricate Ganesha circular cut combines traditional woodworking with master-level hand painting. The result is a high-relief effect that adds texture and depth to the spiritual art piece.",
     "price": 1250,
     "originalPrice": 1700,
     "discount": "26%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["12 inch", "15 inch"],
+    "reviewsCount": 11,
+    "images": [
+      "/pictures/Ciscular Cut - Ganesha.jpeg"
+    ]
   },
   {
     "id": 13,
     "imageUrl": "/pictures/Square Hanging - The Bloom.jpeg",
     "title": "The Bloom Square - Vibrant Floral Wall Piece",
     "subtitle": "Vibrant floral wall piece",
+    "description": "A vibrant celebration of nature, 'The Bloom' features bold floral motifs on a modern square format. The hand-painted details are rich and textured, making it a standout addition to any gallery wall.",
     "price": 1400,
     "originalPrice": 1900,
     "discount": "26%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["10x10 inch"],
+    "reviewsCount": 4,
+    "images": [
+      "/pictures/Square Hanging - The Bloom.jpeg"
+    ]
   },
   {
     "id": 14,
     "imageUrl": "/pictures/Circular Cut - Parvati Shiv.jpeg",
     "title": "Parvati Shiv Art - Divine Couple Portrait",
     "subtitle": "Divine couple circular portrait",
+    "description": "A divine portrait of Parvati and Shiv, hand-painted on a circular base. This piece captures the celestial harmony and spiritual depth of the divine couple through exquisite detailing and meaningful color symbolism.",
     "price": 1600,
     "originalPrice": 2200,
     "discount": "27%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["15 inch"],
+    "reviewsCount": 20,
+    "images": [
+      "/pictures/Circular Cut - Parvati Shiv.jpeg"
+    ]
   },
   {
     "id": 15,
     "imageUrl": "/pictures/Square Hanging - Krishna.jpeg",
     "title": "Krishna Square Art - Ethereal Devotional Painting",
     "subtitle": "Ethereal devotional painting",
+    "description": "Experience the ethereal beauty of Krishna through this devotional square painting. The artist uses a delicate touch to portray the playful yet profound nature of the deity, perfect for creating a peaceful sanctuary in your home.",
     "price": 1800,
     "originalPrice": 2500,
     "discount": "28%",
-    "badge": "Offer"
+    "badge": "Offer",
+    "sizes": ["12x12 inch"],
+    "reviewsCount": 32,
+    "images": [
+      "/pictures/Square Hanging - Krishna.jpeg"
+    ]
   }
 ]
+
