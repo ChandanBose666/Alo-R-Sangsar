@@ -4,6 +4,16 @@ import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import products from "../../data/products.json";
 
+// Shared UI Components
+import Breadcrumbs from "../../components/ui/Breadcrumbs.astro";
+
+// PDP Specific Components
+import ProductGallery from "../../components/products/ProductGallery.astro";
+import ProductHeader from "../../components/products/ProductHeader.astro";
+import ProductSelection from "../../components/products/ProductSelection.astro";
+import PaymentRewards from "../../components/products/PaymentRewards.astro";
+import ProductStatus from "../../components/products/ProductStatus.astro";
+
 export async function getStaticPaths() {
   return products.map((product) => ({
     params: { id: product.id.toString() },
@@ -13,9 +23,10 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props;
 
-// Mock some extra data if missing
-const stars = 5;
-const reviewsCount = product.reviewsCount || 0;
+const breadcrumbItems = [
+  { label: "Home", href: "/" },
+  { label: product.title },
+];
 ---
 
 <Layout>
@@ -23,327 +34,36 @@ const reviewsCount = product.reviewsCount || 0;
 
   <main class="bg-white min-h-screen pt-24 pb-20">
     <div class="container mx-auto px-4">
-      <!-- Breadcrumbs -->
-      <nav
-        class="flex text-xs text-gray-400 mb-8 uppercase tracking-widest items-center"
-      >
-        <a href="/" class="hover:text-black transition-colors">Home</a>
-        <svg
-          class="w-3 h-3 mx-2"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          ><path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 5l7 7-7 7"></path></svg
-        >
-        <span class="text-gray-900 font-bold">{product.title}</span>
-      </nav>
+      <Breadcrumbs items={breadcrumbItems} />
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         <!-- Left Column: Image Gallery -->
-        <div class="space-y-6">
-          <div
-            class="relative bg-gray-50 rounded-xl overflow-hidden aspect-square group cursor-zoom-in"
-          >
-            <img
-              id="main-image"
-              src={product.imageUrl}
-              alt={product.title}
-              class="w-full h-full object-contain mix-blend-multiply transition-all duration-700 ease-in-out group-hover:scale-105"
-            />
-
-            <!-- Zoom Button -->
-            <button
-              class="absolute top-6 right-6 p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95"
-            >
-              <svg
-                class="w-5 h-5 text-gray-900"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
-                ></path>
-              </svg>
-            </button>
-
-            <!-- Navigation Arrows -->
-            <button
-              id="prev-image"
-              class="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/80 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all hover:bg-white shadow-sm -translate-x-4 group-hover:translate-x-0 z-10"
-            >
-              <svg
-                class="w-6 h-6 text-gray-900"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 19l-7-7 7-7"></path></svg
-              >
-            </button>
-            <button
-              id="next-image"
-              class="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/80 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-all hover:bg-white shadow-sm translate-x-4 group-hover:translate-x-0 z-10"
-            >
-              <svg
-                class="w-6 h-6 text-gray-900"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"></path></svg
-              >
-            </button>
-          </div>
-
-          <!-- Thumbnails -->
-          <div
-            class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide"
-            id="thumbnail-container"
-            data-images={JSON.stringify(product.images || [])}
-          >
-            {
-              product.images?.map((img, index) => (
-                <button
-                  data-img-src={img}
-                  data-index={index}
-                  class={`thumb-btn flex-shrink-0 w-24 h-24 rounded-lg bg-gray-50 p-2 border-2 transition-all ${index === 0 ? "border-black" : "border-transparent hover:border-gray-300"}`}
-                >
-                  <img
-                    src={img}
-                    alt={`${product.title} thumbnail ${index + 1}`}
-                    class="w-full h-full object-contain mix-blend-multiply pointer-events-none"
-                  />
-                </button>
-              ))
-            }
-          </div>
-        </div>
+        <ProductGallery
+          mainImage={product.imageUrl}
+          images={product.images || []}
+          title={product.title}
+        />
 
         <!-- Right Column: Product Info -->
         <div class="flex flex-col">
-          <div class="mb-6">
-            <h1
-              class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight"
-            >
-              {product.title}
-            </h1>
-
-            <div class="flex items-center gap-4 mb-6">
-              <div class="flex items-center">
-                {
-                  [...Array(5)].map(() => (
-                    <svg
-                      class="w-4 h-4 text-green-500 fill-current"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                    </svg>
-                  ))
-                }
-              </div>
-              <a
-                href="#reviews"
-                class="text-sm text-gray-500 hover:text-black underline underline-offset-4"
-              >
-                {reviewsCount} reviews
-              </a>
-            </div>
-
-            <div class="space-y-2 mb-8">
-              <div class="flex items-baseline gap-4">
-                <span class="text-4xl font-bold text-gray-900"
-                  >₹{product.price.toFixed(2)}</span
-                >
-                <span class="text-xl text-gray-400 line-through"
-                  >₹{product.originalPrice.toFixed(2)}</span
-                >
-              </div>
-              <p
-                class="text-red-600 font-bold bg-red-50 inline-block px-3 py-1 rounded text-sm capitalize"
-              >
-                Save ₹{(product.originalPrice - product.price).toFixed(2)} ({
-                  product.discount
-                })
-              </p>
-            </div>
-          </div>
+          <ProductHeader
+            title={product.title}
+            price={product.price}
+            originalPrice={product.originalPrice}
+            discount={product.discount}
+            reviewsCount={product.reviewsCount || 0}
+          />
 
           <!-- Description (Brief) -->
           <p class="text-gray-600 leading-relaxed mb-8">
             {product.description}
           </p>
 
-          <!-- Payment Info -->
-          <div
-            class="p-4 border border-gray-100 rounded-xl mb-8 flex items-center justify-between bg-gray-50/50"
-          >
-            <div class="flex items-center gap-3 text-sm">
-              <span class="font-bold lowercase italic text-lg tracking-tighter"
-                >clearpay<span class="text-orange-500">✨</span></span
-              >
-              <span class="text-gray-500"
-                >4 installments of ₹{(product.price / 4).toFixed(2)}</span
-              >
-            </div>
-            <button
-              class="text-xs font-bold underline uppercase tracking-widest hover:text-orange-500"
-              >Info</button
-            >
-          </div>
+          <PaymentRewards price={product.price} />
 
-          <!-- Reward Points -->
-          <div
-            class="bg-gray-900 text-white p-4 rounded-xl mb-10 flex items-center justify-between"
-          >
-            <div class="flex items-center gap-3">
-              <div class="bg-white/20 p-2 rounded-lg">
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z"
-                  ></path>
-                </svg>
-              </div>
-              <div>
-                <p class="text-sm font-medium">
-                  Earn <span class="font-bold"
-                    >{Math.floor(product.price / 10)} points</span>
-                </p>
-                <p class="text-[10px] text-gray-400 uppercase tracking-widest">
-                  Join our loyalty program
-                </p>
-              </div>
-            </div>
-            <button
-              class="text-xs font-bold underline uppercase tracking-widest"
-              >Join now</button
-            >
-          </div>
+          <ProductSelection sizes={product.sizes} />
 
-          <!-- Selection Options -->
-          <div class="space-y-8 mb-10">
-            {
-              product.sizes && (
-                <div>
-                  <label class="text-xs font-bold uppercase tracking-widest text-gray-900 mb-4 block">
-                    Select Size
-                  </label>
-                  <div class="flex flex-wrap gap-3">
-                    {product.sizes.map((size, index) => (
-                      <button
-                        class={`px-6 py-3 border-2 text-sm font-semibold transition-all ${index === 1 ? "border-black bg-black text-white" : "border-gray-200 hover:border-gray-400"}`}
-                      >
-                        {size}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )
-            }
-
-            <div class="flex gap-4">
-              <div class="flex-1">
-                <label
-                  class="text-xs font-bold uppercase tracking-widest text-gray-900 mb-4 block"
-                >
-                  Quantity
-                </label>
-                <div
-                  class="flex items-center border-2 border-gray-200 rounded-lg w-fit h-[56px]"
-                >
-                  <button
-                    class="px-5 h-full hover:bg-gray-50 transition-colors border-r"
-                    id="minus">-</button
-                  >
-                  <input
-                    type="number"
-                    value="1"
-                    min="1"
-                    class="w-16 text-center font-bold focus:outline-none h-full"
-                  />
-                  <button
-                    class="px-5 h-full hover:bg-gray-50 transition-colors border-l"
-                    id="plus">+</button
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CTA Buttons -->
-          <div class="flex gap-4">
-            <button
-              class="flex-[3] bg-black text-white py-5 rounded-lg font-bold uppercase tracking-widest hover:bg-gray-800 transition-all transform active:scale-[0.98]"
-            >
-              Add to Basket
-            </button>
-            <button
-              class="flex-1 border-2 border-gray-200 rounded-lg flex items-center justify-center hover:border-black transition-colors group"
-            >
-              <svg
-                class="w-6 h-6 text-gray-400 group-hover:text-red-500 transition-colors"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                ></path>
-              </svg>
-            </button>
-          </div>
-
-          <!-- Bottom Info -->
-          <div class="mt-8 space-y-4">
-            <div
-              class="flex items-center gap-3 text-sm text-green-600 font-medium"
-            >
-              <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse">
-              </div>
-              In stock | Usually dispatched within 24 hours
-            </div>
-
-            <!-- Sale Banner -->
-            <div class="bg-orange-50 p-6 rounded-xl border border-orange-100">
-              <p
-                class="text-xs font-bold text-orange-600 uppercase tracking-widest mb-1"
-              >
-                Sale
-              </p>
-              <p class="text-gray-700 text-sm mb-4">
-                The big January Sale. Prices whilst stocks last.
-              </p>
-              <button
-                class="w-full py-3 bg-white border border-gray-200 text-xs font-bold uppercase tracking-widest hover:bg-gray-50 transition-colors rounded"
-              >
-                Shop All Sale
-              </button>
-            </div>
-          </div>
+          <ProductStatus />
         </div>
       </div>
     </div>
@@ -351,110 +71,3 @@ const reviewsCount = product.reviewsCount || 0;
 
   <Footer />
 </Layout>
-
-<style>
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-</style>
-
-<script>
-  function setupGallery() {
-    const mainImage = document.getElementById("main-image") as HTMLImageElement;
-    const thumbBtns = document.querySelectorAll(".thumb-btn");
-    const prevBtn = document.getElementById("prev-image");
-    const nextBtn = document.getElementById("next-image");
-    const thumbContainer = document.getElementById("thumbnail-container");
-    const plusBtn = document.getElementById("plus");
-    const minusBtn = document.getElementById("minus");
-    const quantityInput = document.querySelector(
-      'input[type="number"]',
-    ) as HTMLInputElement;
-
-    if (!mainImage || !thumbContainer) return;
-
-    const images = JSON.parse(
-      thumbContainer.getAttribute("data-images") || "[]",
-    );
-    let currentIndex = 0;
-
-    function updateGallery(index: number) {
-      if (index < 0 || index >= images.length) return;
-      currentIndex = index;
-
-      // Update Main Image with transition
-      mainImage.style.opacity = "0";
-      mainImage.style.transform = "scale(0.98)";
-
-      setTimeout(() => {
-        mainImage.src = images[currentIndex];
-        mainImage.style.opacity = "1";
-        mainImage.style.transform = "scale(1)";
-      }, 150);
-
-      // Update active border on thumbnails
-      thumbBtns.forEach((btn, i) => {
-        if (i === currentIndex) {
-          btn.classList.add("border-black");
-          btn.classList.remove("border-transparent");
-          // Scroll thumbnail into view
-          btn.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-            inline: "center",
-          });
-        } else {
-          btn.classList.remove("border-black");
-          btn.classList.add("border-transparent");
-        }
-      });
-    }
-
-    // Thumbnail click events
-    thumbBtns.forEach((btn, index) => {
-      btn.addEventListener("click", () => updateGallery(index));
-    });
-
-    // Arrow controls
-    prevBtn?.addEventListener("click", () => {
-      let nextIndex = currentIndex - 1;
-      if (nextIndex < 0) nextIndex = images.length - 1;
-      updateGallery(nextIndex);
-    });
-
-    nextBtn?.addEventListener("click", () => {
-      let nextIndex = currentIndex + 1;
-      if (nextIndex >= images.length) nextIndex = 0;
-      updateGallery(nextIndex);
-    });
-
-    // Quantity logic
-    if (plusBtn && minusBtn && quantityInput) {
-      plusBtn.addEventListener("click", () => {
-        quantityInput.value = (parseInt(quantityInput.value) + 1).toString();
-      });
-
-      minusBtn.addEventListener("click", () => {
-        if (parseInt(quantityInput.value) > 1) {
-          quantityInput.value = (parseInt(quantityInput.value) - 1).toString();
-        }
-      });
-    }
-  }
-
-  // Initial load
-  setupGallery();
-
-  // Listen for view transitions
-  document.addEventListener("astro:after-swap", setupGallery);
-</script>
