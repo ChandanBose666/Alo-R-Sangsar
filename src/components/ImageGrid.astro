@@ -90,13 +90,19 @@ for (let i = 0; i < products.length; i += itemsPerSlideTablet) {
             >
               {slideProducts.map((product) => (
                 <div class="flex flex-col h-full bg-white group/card">
-                  <div class="relative aspect-[4/5] rounded-lg overflow-hidden mb-4 cursor-pointer">
+                  <a
+                    href={`/products/${product.id}`}
+                    class="relative aspect-[4/5] rounded-lg overflow-hidden mb-4 block group/img"
+                  >
                     {product.badge && (
-                      <span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10 cursor-pointer">
+                      <span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
                         {product.badge}
                       </span>
                     )}
-                    <button class="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition-colors z-10 cursor-pointer">
+                    <button
+                      class="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition-colors z-10"
+                      onclick="event.preventDefault()"
+                    >
                       <svg
                         class="w-6 h-6"
                         fill="none"
@@ -114,14 +120,19 @@ for (let i = 0; i < products.length; i += itemsPerSlideTablet) {
                     <img
                       src={product.imageUrl}
                       alt={product.title}
-                      class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover/card:scale-105"
+                      class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover/img:scale-105"
                     />
-                  </div>
+                  </a>
 
                   <div class="flex flex-col flex-grow">
-                    <h3 class="text-sm font-medium text-gray-800 line-clamp-2 mb-1 min-h-[40px] cursor-default">
-                      {product.title}
-                    </h3>
+                    <a
+                      href={`/products/${product.id}`}
+                      class="hover:text-black"
+                    >
+                      <h3 class="text-sm font-medium text-gray-800 line-clamp-2 mb-1 min-h-[40px]">
+                        {product.title}
+                      </h3>
+                    </a>
 
                     <div class="flex items-center gap-0.5 mb-2">
                       {[...Array(5)].map(() => (
@@ -236,11 +247,17 @@ for (let i = 0; i < products.length; i += itemsPerSlideTablet) {
             >
               {slideProducts.map((product) => (
                 <div class="flex flex-col h-full bg-white group/card">
-                  <div class="relative aspect-[4/5] rounded-lg overflow-hidden mb-4 cursor-pointer">
-                    <span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase z-10 cursor-pointer">
+                  <a
+                    href={`/products/${product.id}`}
+                    class="relative aspect-[4/5] rounded-lg overflow-hidden mb-4 block group/img"
+                  >
+                    <span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase z-10">
                       Offer
                     </span>
-                    <button class="absolute top-3 right-3 text-gray-400 cursor-pointer">
+                    <button
+                      class="absolute top-3 right-3 text-gray-400"
+                      onclick="event.preventDefault()"
+                    >
                       <svg
                         class="w-6 h-6"
                         fill="none"
@@ -258,13 +275,15 @@ for (let i = 0; i < products.length; i += itemsPerSlideTablet) {
                     <img
                       src={product.imageUrl}
                       alt={product.title}
-                      class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover/card:scale-105"
+                      class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover/img:scale-105"
                     />
-                  </div>
+                  </a>
                   <div class="flex flex-col flex-grow">
-                    <h3 class="text-sm font-medium text-gray-800 line-clamp-2 mb-1 min-h-[40px]">
-                      {product.title}
-                    </h3>
+                    <a href={`/products/${product.id}`} class="hover:underline">
+                      <h3 class="text-sm font-medium text-gray-800 line-clamp-2 mb-1 min-h-[40px]">
+                        {product.title}
+                      </h3>
+                    </a>
                     <div class="flex items-center gap-0.5 mb-2">
                       {[...Array(5)].map(() => (
                         <svg
@@ -363,19 +382,24 @@ for (let i = 0; i < products.length; i += itemsPerSlideTablet) {
               class="absolute inset-0 transition-opacity duration-500 ease-in-out p-2 opacity-0 flex justify-center"
             >
               <div class="w-full max-w-[300px] flex flex-col bg-white">
-                <div class="relative aspect-[4/5] rounded-lg overflow-hidden mb-4 cursor-pointer">
-                  <span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase z-10 cursor-pointer">
+                <a
+                  href={`/products/${product.id}`}
+                  class="relative aspect-[4/5] rounded-lg overflow-hidden mb-4 block group/img w-full"
+                >
+                  <span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase z-10">
                     Offer
                   </span>
                   <img
                     src={product.imageUrl}
                     alt={product.title}
-                    class="w-full h-full object-contain mix-blend-multiply"
+                    class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover/img:scale-105"
                   />
-                </div>
-                <h3 class="text-sm font-medium text-gray-800 line-clamp-2 mb-1">
-                  {product.title}
-                </h3>
+                </a>
+                <a href={`/products/${product.id}`}>
+                  <h3 class="text-sm font-medium text-gray-800 line-clamp-2 mb-1 text-center">
+                    {product.title}
+                  </h3>
+                </a>
                 <div class="flex items-center justify-center gap-0.5 mb-2">
                   {[...Array(5)].map(() => (
                     <svg
